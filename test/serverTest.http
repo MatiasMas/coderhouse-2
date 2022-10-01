@@ -1,0 +1,22 @@
+### Check response body and status code for api/products
+GET http://localhost:8080/api/products
+
+> {%
+client.test("Request status is 200", function() {
+  client.assert(response.status === 200, `The Status Code expected is 200 but the Status Code retrieved is ${response.status}`);
+});
+
+client.test("Number of products is different from 0", () => {
+  client.assert(response.body.length !== 0, `No products were retrieved, Products found: ${response.body.length}`);
+});
+%}
+
+### Check response status code for api/products/randomProduct
+
+GET http://localhost:8080/api/products/randomProduct
+
+> {%
+client.test("Request status is 200", function() {
+  client.assert(response.status === 200, `The Status Code expected is 200 but the Status Code retrieved is ${response.status}`);
+});
+%}
